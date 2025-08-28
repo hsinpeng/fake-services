@@ -1,18 +1,28 @@
-def main():
-    print("Hello from fake-services!")
+import argparse
 
-    run_option = 1
+def main():
+    # Create parser
+    parse = argparse.ArgumentParser(
+        description="This is my parser"
+    )
+    # Add argument(s) to parser
+    parse.add_argument("-o", dest="run_option", default=0, type=int)
+    # Parsing arguments
+    args = parse.parse_args()
+    # get values
+    run_option:int = args.run_option
+
     match run_option:
         case 0:
-            print("Simple test")
+            print("Hello from fake-services! Please check how to use me by the '-h' argument.")
 
         case 1:
             print("Fake SMTP server test")
             import smtplib
             from email.mime.text import MIMEText
 
-            host_name = 'localhost'
-            port_number = 8025
+            host_name:str = 'localhost'
+            port_number:int = 8025
             try:
                 with smtplib.SMTP(host_name, port_number) as server:
                     server.set_debuglevel(1)  # Enable debugging output
