@@ -22,3 +22,9 @@ Test fake SMTP server by sending email
 ```
 uv run python main.py -o 1
 ```
+
+## Redis
+### Run redis server
+```
+podman run --name fastapi_redis_dev -p 6379:6379 -d redis --requirepass "fastapi_redis_password"
+```
